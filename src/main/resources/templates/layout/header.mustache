@@ -1,80 +1,96 @@
-<!DOCTYPE HTML>
-<html>
-<head> <!-- 페이지 로딩속도를 높이기 위해 css는 header에 js는 footer에 -->
-    <!-- bootstrap.js의 경우 제이쿼리가 꼭 있어야만 한다. -->
-    <title>5km home chrage</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!doctype html>
+<html class="no-js" lang="zxx">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Finloans</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
+
 <body>
-<h1>5km home charge</h1>
-<div class="btn float-right">
-    {{#user}}
-        <p><span>{{user}}님 방가!</span></p>
-        <a href="/logout" class="btn btn-success active" role="button">Logout</a>
-    {{/user}}
-    {{^user}}
-        <button class="btn btn-success active" id="indexJoin">Join</button>
-        <button class="btn btn-success active" id="indexLogin">Login</button>
-    {{/user}}
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+<![endif]-->
 
-</div>
+<!-- header-start -->
+<header>
+    <div class="header-area ">
+        <div id="sticky-header" class="main-header-area">
+            <div class="container-fluid ">
+                <div class="header_bottom_border">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-2">
+                            <div class="logo">
+                                <a href="index">
+                                    <img src="img/logo.png" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-7">
+                            <div class="main-menu  d-none d-lg-block">
+                                <nav>
+                                    <ul id="navigation">
+                                        <li><a href="index">home</a></li>
+                                        <li><a href="Loan">Loan</a></li>
+                                        <li><a href="about">about</a></li>
+                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="apply">apply loan</a></li>
+                                                <li><a href="elements">elements</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                            <ul class="submenu">
+                                                <li><a href="blog">blog</a></li>
+                                                <li><a href="single-blog">single-blog</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="FAQ">FAQ</a></li>
+                                        <li><a href="contact">Contact</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                            <div class="Appointment">
+                                <div class="phone_num d-none d-xl-block">
+                                    <a href="#"> <i class="fa fa-phone"></i> +10 673 567 367</a>
+                                </div>
+                                <div class="d-none d-lg-block">
+                                    <a class="boxed-btn4" href="apply">Apply for a Loan</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="container">
-
-            <nav class="navbar navbar-expand-xl bg-dark navbar-dark">
-                <a class="navbar-brand" href="/">Logo!</a>
-                <ul class="navbar-nav position-static">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/chargingStation" id="navbardrop" data-toggle="dropdown">
-                            SCS
-                        </a>
-                        <div class="dropdown-menu w-100">
-                            <a class="dropdown-item" href="/chargingStation/chargingRegister">충전소 등록</a>
-                            <a class="dropdown-item" href="/chargingStation/chargingSearch">충전소 찾기</a>
-                            <a class="dropdown-item" href="/chargingStation/chargingHistory">이용 내역</a>
-                            <a class="dropdown-item" href="/admin/chargingRequest">충전소 요청</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/happyParking" id="navbardrop" data-toggle="dropdown">
-                            Happy Parking
-                        </a>
-                        <div class="dropdown-menu w-100">
-                            <a class="dropdown-item" href="/happyParking/happyParkingRegister">주차장 등록</a>
-                            <a class="dropdown-item" href="/happyParking/happyParkingSearch">주차장 찾기</a>
-                            <a class="dropdown-item" href="/happyParking/happyParkingHistory">이용 내역</a>
-                            <a class="dropdown-item" href="/admin/happyParkingRequestList">주차장 요청</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/watchVehicle">Watch Vehicle</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/otherService" id="navbardrop" data-toggle="dropdown">
-                            부가서비스
-                        </a>
-                        <div class="dropdown-menu w-100">
-                            <a class="dropdown-item" href="/otherService/parkingMap">Parking Map</a>
-                            <a class="dropdown-item" href="/otherService/EZCharging">Ez Charging</a>
-                            <a class="dropdown-item" href="/otherService/QnA">QnA</a>
-                            <a class="dropdown-item" href="/otherService/bestQnA">자주 묻는 질문</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/myPage" id="navbardrop" data-toggle="dropdown">
-                           마이페이지
-                        </a>
-                        <div class="dropdown-menu w-100">
-                            <a class="dropdown-item" href="/myPage/memberEdit">정보 수정</a>
-                            <a class="dropdown-item" href="/myPage/bookmark">즐겨 찾기</a>
-                            <a class="dropdown-item" href="/chargingStation/chargingRegister">충전소 등록</a>
-                            <a class="dropdown-item" href="/happyParking/happyParkingRegister">주차장 등록</a>
-                            <a class="dropdown-item" href="/myPage/history">이용 내역</a>
-                            <a class="dropdown-item" href="/admin/memberList">회원 목록</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
-</div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-end -->

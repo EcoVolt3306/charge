@@ -6,9 +6,7 @@ import com.fivekm_home_charge.charge.web.dto.MemberDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
@@ -30,12 +28,23 @@ public class IndexController {
 //        list.add(m3);
     }
 
-    @GetMapping("/")
-    public String main(HttpSession httpSession){
+    @RequestMapping(value="/{itemid}", method = RequestMethod.GET)
+    public String main(HttpSession httpSession, @PathVariable String itemid){
+        System.out.println(itemid);
         System.out.println("현재세션유저아이디 : " + httpSession.getAttribute("userId"));
+        if(itemid.equals("index")) {
+            return "/index/" + itemid;
+        } else {
+            return "/" + itemid;
+        }
+    }
+    @GetMapping("/")
+    public String index() {
         return "/index/index";
     }
 
+
+    /*
     @GetMapping("/join")
     public String join() {
         return "/index/join";
@@ -45,7 +54,7 @@ public class IndexController {
     public String login(){
         return "/index/login";
     }
-
+*/
     @PostMapping("/rest/login")
     public String getMember(MemberDto memberDto, HttpSession httpSession, Model model) throws Exception{
         MemberDto memberLogin = memberService.getMember(memberDto.getId(), memberDto.getPassword());
@@ -67,7 +76,7 @@ public class IndexController {
         httpSession.invalidate();
         return "redirect:/";
     }
-
+/*
     @GetMapping("/test")
     public String test(){
         return "test";
@@ -77,20 +86,23 @@ public class IndexController {
     public String modal(){
         return "/index/modal";
     }
-
+*/
     @GetMapping("/multimodal")
     public String multimodal(@RequestParam String parkingName, Model model) throws Exception{
         model.addAttribute("book1", happyParkingService.happyParkingBook1());
         return "/index/multimodal";
     }
-
+/*
     @GetMapping("/about")
     public String about(){
         return "/about";
     }
 
+
     @GetMapping
     public String pay(){
         return "/pay";
     }
+
+ */
 }
