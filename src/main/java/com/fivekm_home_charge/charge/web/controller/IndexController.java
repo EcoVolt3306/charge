@@ -30,13 +30,15 @@ public class IndexController {
 
     @RequestMapping(value="/{itemid}", method = RequestMethod.GET)
     public String main(HttpSession httpSession, @PathVariable String itemid){
-        System.out.println(itemid);
+        System.out.println("index item id : " + itemid);
         System.out.println("현재세션유저아이디 : " + httpSession.getAttribute("userId"));
-        if(itemid.equals("index")) {
-            return "/index/" + itemid;
-        } else {
-            return "/" + itemid;
-        }
+        return "/" + itemid;
+    }
+    @RequestMapping(value="/index/{itemid}", method = RequestMethod.GET)
+    public String index_main(HttpSession httpSession, @PathVariable String itemid){
+        System.out.println("index item id : " + itemid);
+        System.out.println("현재세션유저아이디 : " + httpSession.getAttribute("userId"));
+        return "/index/" + itemid;
     }
     @GetMapping("/")
     public String index() {
@@ -45,17 +47,18 @@ public class IndexController {
 
 
     /*
-    @GetMapping("/join")
+    @GetMapping("/index/join")
     public String join() {
         return "/index/join";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/index/login")
     public String login(){
         return "/index/login";
     }
-*/
-    @PostMapping("/rest/login")
+    */
+
+    @PostMapping("/index/login")
     public String getMember(MemberDto memberDto, HttpSession httpSession, Model model) throws Exception{
         MemberDto memberLogin = memberService.getMember(memberDto.getId(), memberDto.getPassword());
         if (memberLogin == null) {
